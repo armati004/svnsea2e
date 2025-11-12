@@ -5,8 +5,8 @@
     <div class="header-concept">
       <img class="profile-img" src="{{img}}" data-edit="img" title="{{name}}" height="100" width="100" />
       <div class="header-fields">
-        {{> "systems/svnsea2e/templates/actors/parts/actor-name.html"}}
-        {{> "systems/svnsea2e/templates/actors/parts/actor-villainy.html"}}
+        {{> "systems/svnsea2e/templates/actors/parts/actor-name.hbs"}}
+        {{> "systems/svnsea2e/templates/actors/parts/actor-villainy.hbs"}}
       </div>
     </div>
   </header>
@@ -37,7 +37,7 @@
   <section class="sheet-body">
     {{!-- Traits Tab --}}
     <div class="tab traits" data-group="primary" data-tab="traits">
-      {{> "systems/svnsea2e/templates/actors/parts/actor-vtraits.html"}}
+      {{> "systems/svnsea2e/templates/actors/parts/actor-vtraits.hbs"}}
     </div>
 
     {{!-- Features Tab --}}
@@ -106,15 +106,15 @@
     </div>
 
     {{!-- Sorcery Tab --}}
-    {{> "systems/svnsea2e/templates/actors/parts/actor-sorcery.html"}}
+    {{> "systems/svnsea2e/templates/actors/parts/actor-sorcery.hbs"}}
 
     {{!-- Inventory Tab --}}
-    {{> "systems/svnsea2e/templates/actors/parts/actor-inventory.html"}}
+    {{> "systems/svnsea2e/templates/actors/parts/actor-inventory.hbs"}}
 
     {{!-- Fate Tab --}}
-    {{> "systems/svnsea2e/templates/actors/parts/actor-fate.html"}}
+    {{> "systems/svnsea2e/templates/actors/parts/actor-fate.hbs"}}
 
     {{!-- Concept Tab --}}
-    {{> "systems/svnsea2e/templates/actors/parts/actor-concept.html"}}
+    {{> "systems/svnsea2e/templates/actors/parts/actor-concept.hbs"}}
   </section>
 </form>

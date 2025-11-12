@@ -9,7 +9,7 @@ export default class SkillSelector extends FormApplication {
       id: 'skill-selector',
       classes: ['svnsea2e'],
       title: game.i18n.localize('SVNSEA2E.BackgroundSkillSelect'),
-      template: 'systems/svnsea2e/templates/apps/skill-selector.html',
+      template: 'systems/svnsea2e/templates/apps/skill-selector.hbs',
       width: 320,
       height: 'auto',
       choices: {},

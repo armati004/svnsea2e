@@ -9,7 +9,7 @@ export class ItemSheetSS2eAdvantage extends ItemSheetSS2e {
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      template: 'systems/svnsea2e/templates/items/advantage.html',
+      template: 'systems/svnsea2e/templates/items/advantage.hbs',
       tabs: [
         {
           navSelector: '.sheet-tabs',

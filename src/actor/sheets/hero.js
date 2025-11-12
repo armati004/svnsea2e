@@ -9,7 +9,7 @@ export class ActorSheetSS2eHero extends ActorSheetSS2e {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ['svnsea2e', 'sheet', 'actor', 'hero'],
-      template: 'systems/svnsea2e/templates/actors/hero.html',
+      template: 'systems/svnsea2e/templates/actors/hero.hbs',
       tabs: [
         {
           navSelector: '.sheet-tabs',

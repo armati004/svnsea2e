@@ -9,7 +9,7 @@ export class ItemSheetSS2eShipBackground extends ItemSheetSS2e {
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      template: 'systems/svnsea2e/templates/items/shipbackground.html',
+      template: 'systems/svnsea2e/templates/items/shipbackground.hbs',
       tabs: [
         {
           navSelector: '.sheet-tabs',

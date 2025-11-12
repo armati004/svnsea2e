@@ -9,7 +9,7 @@ export class ItemSheetSS2eDuelStyle extends ItemSheetSS2e {
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      template: 'systems/svnsea2e/templates/items/duelstyle.html',
+      template: 'systems/svnsea2e/templates/items/duelstyle.hbs',
       tabs: [
         {
           navSelector: '.sheet-tabs',

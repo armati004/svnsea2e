@@ -18,7 +18,7 @@ export class Toolbox extends FormApplication {
     return foundry.utils.mergeObject(super.defaultOptions, {
       id: 'svnsea-toolbox',
       classes: ['toolbox'],
-      template: 'systems/svnsea2e/templates/toolbox/toolbox.html',
+      template: 'systems/svnsea2e/templates/toolbox/toolbox.hbs',
       title: game.i18n.localize('SVNSEA2E.Toolbox'),
       left: x - 650,
       top: 20,

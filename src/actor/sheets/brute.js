@@ -8,7 +8,7 @@ export class ActorSheetSS2eBrute extends ActorSheetSS2e {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ['svnsea2e', 'sheet', 'actor', 'brute'],
-      template: 'systems/svnsea2e/templates/actors/brute.html',
+      template: 'systems/svnsea2e/templates/actors/brute.hbs',
       tabs: [
         {
           navSelector: '.sheet-tabs',

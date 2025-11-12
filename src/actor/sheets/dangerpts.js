@@ -9,7 +9,7 @@ export class ActorSheetSS2eDangerPts extends ActorSheetSS2e {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ['svnsea2e', 'sheet', 'actor'],
-      template: 'systems/svnsea2e/templates/actors/dangerpts.html',
+      template: 'systems/svnsea2e/templates/actors/dangerpts.hbs',
       tabs: [
         {
           contentSelector: '.sheet-body',

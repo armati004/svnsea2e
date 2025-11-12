@@ -6,7 +6,7 @@
       <img class="profile-img" src="{{img}}" data-edit="img" title="{{name}}" height="100" width="100" />
       <div class="header-fields">
         <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="{{localize 'SVNSEA2E.ActorName'}}" /></h1>
-        {{> "systems/svnsea2e/templates/actors/parts/actor-wounds.html"}}
+        {{> "systems/svnsea2e/templates/actors/parts/actor-wounds.hbs"}}
       </div>
     </div>
   </header>
@@ -28,7 +28,7 @@
   <section class="sheet-body">
     {{!-- Features Tab --}}
     <div class="tab features" data-group="primary" data-tab="features">
-      {{> "systems/svnsea2e/templates/actors/parts/actor-vtraits.html"}}
+      {{> "systems/svnsea2e/templates/actors/parts/actor-vtraits.hbs"}}
 
       <ol class="items-list">
         <li class="flexrow item-header">
@@ -53,9 +53,9 @@
     </div>
 
     {{!-- Fate Tab --}}
-    {{> "systems/svnsea2e/templates/actors/parts/actor-fate.html"}}
+    {{> "systems/svnsea2e/templates/actors/parts/actor-fate.hbs"}}
 
     {{!-- Concept Tab --}}
-    {{> "systems/svnsea2e/templates/actors/parts/actor-concept.html"}}
+    {{> "systems/svnsea2e/templates/actors/parts/actor-concept.hbs"}}
   </section>
 </form>

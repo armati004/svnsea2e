@@ -8,7 +8,7 @@ export class ItemSheetSS2eStory extends ItemSheetSS2e {
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      template: 'systems/svnsea2e/templates/items/story.html',
+      template: 'systems/svnsea2e/templates/items/story.hbs',
       tabs: [
         {
           navSelector: '.sheet-tabs',

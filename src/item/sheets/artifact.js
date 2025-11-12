@@ -9,7 +9,7 @@ export class ItemSheetSS2eArtifact extends ItemSheetSS2e {
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      template: 'systems/svnsea2e/templates/items/artifact.html',
+      template: 'systems/svnsea2e/templates/items/artifact.hbs',
       tabs: [
         {
           navSelector: '.sheet-tabs',

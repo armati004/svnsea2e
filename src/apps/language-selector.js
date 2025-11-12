@@ -9,7 +9,7 @@ export default class LanguageSelector extends FormApplication {
       id: 'language-selector',
       classes: ['svnsea2e'],
       title: game.i18n.localize('SVNSEA2E.ActorLangSelect'),
-      template: 'systems/svnsea2e/templates/apps/language-selector.html',
+      template: 'systems/svnsea2e/templates/apps/language-selector.hbs',
       width: 320,
       height: 'auto',
       choices: {},

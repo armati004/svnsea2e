@@ -9,7 +9,7 @@ export class ItemSheetSS2eMonsterQuality extends ItemSheetSS2e {
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      template: 'systems/svnsea2e/templates/items/monsterquality.html',
+      template: 'systems/svnsea2e/templates/items/monsterquality.hbs',
       tabs: [
         {
           navSelector: '.sheet-tabs',

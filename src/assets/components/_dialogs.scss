@@ -4,6 +4,10 @@
   border: 0;
 }
 
+.dialog-button.roll {
+  display: flex;
+}
+
 .roll-dialog input[type='number'] {
   max-width: 3rem;
   text-align: center;

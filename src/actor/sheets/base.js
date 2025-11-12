@@ -702,7 +702,7 @@ export default class ActorSheetSS2e extends ActorSheet {
     const initialBonusDice = data.dwounds.value >= 1 ? 1 : 0;
 
     // Render modal dialog
-    const template = 'systems/svnsea2e/templates/chats/skill-roll-dialog.html';
+    const template = 'systems/svnsea2e/templates/chats/skill-roll-dialog.hbs';
     const dialogData = { data, traits, initialBonusDice };
 
     const html = await renderTemplate(template, dialogData);
@@ -726,7 +726,7 @@ export default class ActorSheetSS2e extends ActorSheet {
                   actor,
                   data,
                   form: html[0].querySelector('form'),
-                  template: 'systems/svnsea2e/templates/chats/roll-card.html',
+                  template: 'systems/svnsea2e/templates/chats/roll-card.hbs',
                   title: game.i18n.format('SVNSEA2E.ApproachRollChatTitle', {
                     trait:
                       html[0].querySelector('form').trait[
@@ -765,7 +765,7 @@ export default class ActorSheetSS2e extends ActorSheet {
     };
 
     // Render modal dialog
-    const template = 'systems/svnsea2e/templates/chats/trait-roll-dialog.html';
+    const template = 'systems/svnsea2e/templates/chats/trait-roll-dialog.hbs';
 
     const initialBonusDice = data.dwounds.value >= 1 ? 1 : 0;
 
@@ -796,7 +796,7 @@ export default class ActorSheetSS2e extends ActorSheet {
                   actor: actor,
                   data: data,
                   form: html[0].querySelector('form'),
-                  template: 'systems/svnsea2e/templates/chats/roll-card.html',
+                  template: 'systems/svnsea2e/templates/chats/roll-card.hbs',
                   title: title,
                 }),
             },

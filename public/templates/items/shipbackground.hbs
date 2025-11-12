@@ -2,13 +2,7 @@
   <header class="sheet-header">
     <img class="profile-img" src="{{img}}" data-edit="img" title="{{name}}" />
     <div class="header-fields">
-      {{> "systems/svnsea2e/templates/items/parts/item-header.html"}}
-      <div class="form-group">
-        <label for="system.artifactType">{{localize "SVNSEA2E.Type"}}</label>
-        <select class="artifact-type" id="system.artifactType" name="system.artifactType">
-          {{selectOptions config.artifactTypes selected=artifactType localize=true}}
-        </select>
-      </div>
+    {{> "systems/svnsea2e/templates/items/parts/item-header.hbs"}}
     </div>
   </header>
 

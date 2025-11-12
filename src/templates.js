@@ -7,20 +7,20 @@ export const preloadHandlebarsTemplates = async function () {
   // Define template paths to load
   const templatePaths = [
     // Actor Sheet Partials
-    'systems/svnsea2e/templates/actors/parts/actor-name.html',
-    'systems/svnsea2e/templates/actors/parts/actor-traits.html',
-    'systems/svnsea2e/templates/actors/parts/actor-concept.html',
-    'systems/svnsea2e/templates/actors/parts/actor-advantages.html',
-    'systems/svnsea2e/templates/actors/parts/actor-sorcery.html',
-    'systems/svnsea2e/templates/actors/parts/actor-inventory.html',
-    'systems/svnsea2e/templates/actors/parts/actor-fate.html',
-    'systems/svnsea2e/templates/actors/parts/actor-villainy.html',
-    'systems/svnsea2e/templates/actors/parts/actor-vtraits.html',
-    'systems/svnsea2e/templates/actors/parts/actor-wounds.html',
+    'systems/svnsea2e/templates/actors/parts/actor-name.hbs',
+    'systems/svnsea2e/templates/actors/parts/actor-traits.hbs',
+    'systems/svnsea2e/templates/actors/parts/actor-concept.hbs',
+    'systems/svnsea2e/templates/actors/parts/actor-advantages.hbs',
+    'systems/svnsea2e/templates/actors/parts/actor-sorcery.hbs',
+    'systems/svnsea2e/templates/actors/parts/actor-inventory.hbs',
+    'systems/svnsea2e/templates/actors/parts/actor-fate.hbs',
+    'systems/svnsea2e/templates/actors/parts/actor-villainy.hbs',
+    'systems/svnsea2e/templates/actors/parts/actor-vtraits.hbs',
+    'systems/svnsea2e/templates/actors/parts/actor-wounds.hbs',
 
     // Item Sheet Partials
-    'systems/svnsea2e/templates/items/parts/item-header.html',
-    'systems/svnsea2e/templates/items/parts/item-description.html',
+    'systems/svnsea2e/templates/items/parts/item-header.hbs',
+    'systems/svnsea2e/templates/items/parts/item-description.hbs',
   ];
 
   // Load the template parts

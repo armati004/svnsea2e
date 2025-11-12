@@ -8,7 +8,7 @@ export class ItemSheetSS2eSorcery extends ItemSheetSS2e {
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      template: 'systems/svnsea2e/templates/items/sorcery.html',
+      template: 'systems/svnsea2e/templates/items/sorcery.hbs',
       width: 750,
       tabs: [
         {

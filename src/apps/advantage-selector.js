@@ -9,7 +9,7 @@ export default class AdvantageSelector extends FormApplication {
       id: 'advantage-selector',
       classes: ['svnsea2e'],
       title: game.i18n.localize('SVNSEA2E.BackgroundAdvantageSelect'),
-      template: 'systems/svnsea2e/templates/apps/advantage-selector.html',
+      template: 'systems/svnsea2e/templates/apps/advantage-selector.hbs',
       width: 320,
       height: 'auto',
       choices: {},

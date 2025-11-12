@@ -10,15 +10,7 @@
 @import 'global/grid';
 @import 'global/flex';
 
-@import 'components/sidebar';
-
-body {
-  font-size: $base-size;
-}
-
-.sheet {
-  font-size: $base-size;
-}
+// @import 'components/sidebar';
 
 .dialog {
   @import 'components/dialogs';

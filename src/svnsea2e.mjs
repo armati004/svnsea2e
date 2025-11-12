@@ -365,13 +365,22 @@ Hooks.on('updateActor', function () {
 
 Hooks.on('renderActorDirectory', (app, html, data) => {
   if (game.user.isGM) {
+    const div = document.createElement('div');
+    div.className = 'header-actions action-buttons flexrow';
+    
     const button = document.createElement('button');
     button.style.width = '95%';
     button.innerHTML = game.i18n.localize('SVNSEA2E.OpenToolbox');
     button.addEventListener('click', () => {
       game.svnsea2e.toolbox.render(true);
     });
-    html.find('.header-actions').after(button);
+    // We want the "Open Toolbox" button to Actors directory but we want it to be a
+    // full width button between the defefault header actions and the directory
+    // search box.
+    const el = html?.querySelector('.directory-header');
+    const searchBox = el.querySelector('search');  
+    div.appendChild(button);
+    el.insertBefore(div, searchBox);
   }
 });
 

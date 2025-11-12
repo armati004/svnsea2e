@@ -2,12 +2,12 @@
   <header class="sheet-header">
     <img class="profile-img" src="{{img}}" data-edit="img" title="{{name}}" />
     <div class="header-fields">
-      {{> "systems/svnsea2e/templates/items/parts/item-header.html"}}
-      <div class="traits grid grid-3col">
-        <div class="trait flexrow">
-          <label for="system.influence.value" class="trait-name">{{localize "SVNSEA2E.Influence"}}</label>
-          <input type="text" id="system.influence.value" name="system.influence.value" value="{{ influence.value }}"data-dtype="Number" />
-        </div>
+      {{> "systems/svnsea2e/templates/items/parts/item-header.hbs"}}
+      <div class="form-group">
+        <label for="system.artifactType">{{localize "SVNSEA2E.Type"}}</label>
+        <select class="artifact-type" id="system.artifactType" name="system.artifactType">
+          {{selectOptions config.artifactTypes selected=artifactType localize=true}}
+        </select>
       </div>
     </div>
   </header>
@@ -21,8 +21,6 @@
 
   {{!-- Sheet Body --}}
   <section class="sheet-body">
-
-    {{!-- Description Tab --}}
     <div class="tab" data-group="primary" data-tab="description">
       {{editor description target="system.description" button=true owner=owner editable=editable}}
     </div>
