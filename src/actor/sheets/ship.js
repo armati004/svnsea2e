@@ -2,8 +2,11 @@ import ActorSheetSS2e from './base.js';
 import { getItems } from '../../helpers.js';
 
 /**
- * Extend the basic ItemSheet with some very simple modifications
- * @extends {ItemSheet}
+ * Actor sheet for Ship characters in 7th Sea 2e.
+ * Manages ship details, crew roster, backgrounds, and adventures.
+ * Provides drag-and-drop functionality for assigning actors to crew roles.
+ * 
+ * @extends {ActorSheetSS2e}
  */
 export class ActorSheetSS2eShip extends ActorSheetSS2e {
   /** @override */

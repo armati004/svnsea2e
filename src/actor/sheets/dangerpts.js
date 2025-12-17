@@ -1,8 +1,11 @@
 import ActorSheetSS2e from './base.js';
 
 /**
- * Extend the basic ItemSheet with some very simple modifications
- * @extends {ItemSheet}
+ * Actor sheet for Danger Points tracking in 7th Sea 2e.
+ * Provides a simple interface for GMs to manage Danger Points,
+ * which are used to enhance villain actions and challenges.
+ * 
+ * @extends {ActorSheetSS2e}
  */
 export class ActorSheetSS2eDangerPts extends ActorSheetSS2e {
   /** @override */

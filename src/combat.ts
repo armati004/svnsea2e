@@ -1,6 +1,7 @@
-export function updateInitiative(actorId, raise) {
+export function updateInitiative(actorId: string, raise: string): void {
   const nRaise = parseFloat(raise);
-  const activeCombat = game.combats.filter((combat) => combat.active);
+  
+  const activeCombat = game.combats?.filter((combat) => combat.active);
 
   if (activeCombat.length > 0) {
     activeCombat.forEach((combat) => {

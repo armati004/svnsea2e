@@ -1,4 +1,4 @@
-import { SVNSEA2E } from '../../config.js';
+import { SVNSEA2E } from '../../config';
 import SkillSelector from '../../apps/skill-selector.js';
 import AdvantageSelector from '../../apps/advantage-selector.js';
 

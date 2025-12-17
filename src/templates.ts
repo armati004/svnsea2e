@@ -1,9 +1,9 @@
 /**
  * Define a set of template paths to pre-load
  * Pre-loaded templates are compiled and cached for fast access when rendering
- * @return {Promise}
+ * @return {Promise<Handlebars.TemplateDelegate[]>} A promise that resolves to an array of compiled Handlebars templates
  */
-export const preloadHandlebarsTemplates = async function () {
+export const preloadHandlebarsTemplates = async function (): Promise<Handlebars.TemplateDelegate[]> {
   // Define template paths to load
   const templatePaths = [
     // Actor Sheet Partials

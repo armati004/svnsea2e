@@ -1,4 +1,4 @@
-import { SVNSEA2E } from '../../config.js';
+import { SVNSEA2E } from '../../config.ts';
 import { ItemSheetSS2e } from './base.js';
 /**
  * Extend the basic ItemSheet with some very simple modifications

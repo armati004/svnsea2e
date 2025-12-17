@@ -1,12 +1,15 @@
 import LanguageSelector from '../../apps/language-selector.js';
-import { updateInitiative } from '../../combat.js';
-import { ActorType } from '../../enums.js';
+import { updateInitiative } from '../../combat';
+import { ActorType } from '../../enums';
 import { getAllPackAdvantages, isValidGlamorIsles } from '../../helpers.js';
 import { roll } from '../../roll/roll.js';
 
 /**
- * Extend the basic ActorSheet class to do all the 7th Sea things!
- * This sheet is an Abstract layer which is not used.
+ * Base actor sheet class for the 7th Sea 2e system.
+ * Provides common functionality for all actor types including item management,
+ * drag-and-drop handling, wound tracking, language selection, and roll dialogs.
+ * Extended by specific actor sheet classes for players, heroes, villains, monsters, ships, brutes, and danger points.
+ * 
  * @extends {ActorSheet}
  */
 export default class ActorSheetSS2e extends ActorSheet {

@@ -1,12 +1,12 @@
-import { updateInitiative } from './combat.js';
+import { updateInitiative } from './combat';
 
-export function chatEventHandler() {
+export function chatEventHandler(): void {
   $(document)
     .find('#chat')
     .on('click', '.initiative-tracker-add', _onAddToInitiativeTracker);
 }
 
-function _onAddToInitiativeTracker(event) {
+function _onAddToInitiativeTracker(event: JQuery.ClickEvent): void {
   event.stopPropagation();
   event.preventDefault();
 

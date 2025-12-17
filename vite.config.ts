@@ -8,12 +8,15 @@ const config = {
     port: 30001,
     open: true,
     proxy: {
-      '^(?!/systems/svnsea2e)': 'http://localhost:30000/',
+      '^(?!/systems/svnsea2e)': 'http://192.168.68.50:30000/',
       '/socket.io': {
-        target: 'ws://localhost:30000',
+        target: 'ws://192.168.68.50:30000',
         ws: true,
       },
     }
+  },
+  esbuild: {
+    keepNames: true,
   },
   build: {
     outDir: path.resolve(__dirname, 'dist'),
@@ -21,14 +24,9 @@ const config = {
     sourcemap: true,
     lib: {
       name: 'svnsea2e',
-      entry: path.resolve(__dirname, 'src/svnsea2e.mjs'),
+      entry: path.resolve(__dirname, 'src', 'svnsea2e.ts'),
       formats: ['es'],
-      fileName: 'svnsea2e'
-    },
-    rollupOptions: {
-      output: {
-        assetFileNames: "svnsea2e.[ext]",
-      },
+      fileName: 'svnsea2e',
     },
   },
 }
