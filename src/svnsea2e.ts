@@ -29,7 +29,7 @@ import { SorceryModel } from './item/models/sorceryModel';
 import { StoryModel } from './item/models/storyModel';
 
 // Import Applications
-import { SvnSea2EActor } from './actor/actor.js';
+import { SvnSea2EActor } from './actor/actor';
 import { ActorSheetSS2eBrute } from './actor/sheets/brute.js';
 import { ActorSheetSS2eDangerPts } from './actor/sheets/dangerpts.js';
 import { ActorSheetSS2eHero } from './actor/sheets/hero.js';
@@ -37,7 +37,7 @@ import { ActorSheetSS2eMonster } from './actor/sheets/monster.js';
 import { ActorSheetSS2ePlayerCharacter } from './actor/sheets/playercharacter.js';
 import { ActorSheetSS2eShip } from './actor/sheets/ship.js';
 import { ActorSheetSS2eVillain } from './actor/sheets/villain.js';
-import { SvnSea2EItem } from './item/item.js';
+import { SvnSea2EItem } from './item/item';
 import { ItemSheetSS2eAdvantage } from './item/sheets/advantage.js';
 import { ItemSheetSS2eArtifact } from './item/sheets/artifact.js';
 import { ItemSheetSS2eBackground } from './item/sheets/background.js';
@@ -59,8 +59,8 @@ import { Toolbox } from './toolbox/toolbox.js';
 
 
 Hooks.once('init', async function () {
-  console.log(`7th Sea 2E | Initializing 7th Sea Second Edition System
-    ${SVNSEA2E.ASCII}`);
+  console.log(`7th Sea 2E | Initializing 7th Sea Second Edition System ${SVNSEA2E.ASCII}`);
+
   game.svnsea2e = {
     applications: {
       SvnSea2EActor,
@@ -81,9 +81,6 @@ Hooks.once('init', async function () {
   };
 
   CONFIG.SVNSEA2E = SVNSEA2E;
-  
-  // CONFIG.SVNSEA2E.natTypes = foundry.utils.duplicate(SVNSEA2E.nations);
-  // CONFIG.SVNSEA2E.natTypes.gisles = 'SVNSEA2E.RegionGlamourIsles';
 
   // Define custom Entity classes
   CONFIG.Actor.documentClass = SvnSea2EActor;
@@ -117,9 +114,13 @@ Hooks.once('init', async function () {
   // Retrieve the Actor and Item collections.
   const Actors = foundry.documents.collections.Actors;
   const Items = foundry.documents.collections.Items;
+  const {
+    ActorSheet,
+    ItemSheet,
+  } = foundry.appv1.sheets;
 
   // Register sheet application classes
-  foundry.documents.collections.Actors.unregisterSheet('core', foundry.appv1.sheets.ActorSheet);
+  Actors.unregisterSheet('core', ActorSheet);
   Actors.registerSheet('svnsea2e', ActorSheetSS2ePlayerCharacter, {
     types: [ActorType.PLAYER],
     makeDefault: true,
@@ -278,7 +279,8 @@ Hooks.once('init', async function () {
 /* -------------------------------------------- */
 
 Hooks.once('ready', async function () {
-  game.svnsea2e.packAdvs = await getAllPackAdvantages();
+  //TODO:MTR it doesn't look like this is needed anymore.
+  // game.svnsea2e.packAdvs = await getAllPackAdvantages();
   console.log('7th Sea 2E | Loaded Compendium Advantages');
   // Wait to register hotbar drop hook on ready so that
   // modules could register earlier if they want to
@@ -329,7 +331,10 @@ Hooks.once('setup', function () {
   // Exclude some from sorting where the default order matters
   const noSort: string[] = [];
 
+
+
   // Localize and sort CONFIG objects
+  //TODO:MTR cannot be access/updated by key without a wrapper interface.
   for (const o of toLocalize) {
     const localized = Object.entries(CONFIG.SVNSEA2E[o]).map((e) => {
       return [e[0], game.i18n.localize(e[1])];
@@ -347,7 +352,7 @@ Hooks.once('setup', function () {
 /**
  * Set the default image for an item type instead of the mystery man
  **/
-Hooks.on('preCreateItem', (document: Item, _options: object, _userId: string) => {
+Hooks.on('preCreateItem', (document: Item) => {
   document.updateSource({
     img: 'systems/svnsea2e/icons/' + document.type + '.jpg',
   });
@@ -358,7 +363,7 @@ Hooks.on('preCreateItem', (document: Item, _options: object, _userId: string) =>
 /**
  * Set the default image for an actor type instead of the mystery man
  **/
-Hooks.on('preCreateActor', (document: Actor, _entity: Actor, _options: object, _userId: string) => {
+Hooks.on('preCreateActor', (document: Actor, _data: Actor.CreateData) => {
   document.updateSource({
     img: 'systems/svnsea2e/icons/' + document.type + '.jpg',
   });
@@ -368,8 +373,8 @@ Hooks.on('updateActor', function () {
   emitCharacterChange();
 });
 
-Hooks.on('renderActorDirectory', (app, html, data) => {
-  if (game.user.isGM) {
+Hooks.on('renderActorDirectory', (_app, html, _data) => {
+  if (game.user?.isGM) {
     const div = document.createElement('div');
     div.className = 'header-actions action-buttons flexrow';
     
@@ -379,34 +384,40 @@ Hooks.on('renderActorDirectory', (app, html, data) => {
     button.addEventListener('click', () => {
       game.svnsea2e.toolbox.render(true);
     });
+
     // We want the "Open Toolbox" button to Actors directory but we want it to be a
     // full width button between the defefault header actions and the directory
     // search box.
     const el = html?.querySelector('.directory-header');
+    if (!el) return;
     const searchBox = el.querySelector('search');  
     div.appendChild(button);
     el.insertBefore(div, searchBox);
   }
 });
 
-async function getAllPackAdvantages() {
-  const advantages = [];
-  const packs = game.packs.entries;
-  for (var i = 0; i < packs.length; i++) {
-    const pack = packs[i];
-    if (pack.metadata.entity === 'Item') {
-      const pitems = await pack.getIndex();
-      for (let j = 0; j < pitems.length; j++) {
-        const document = await pack.getDocument(pitems[j]._id);
-        const entry = document.data;
-        if (entry.type === 'advantage') {
-          advantages.push(entry);
-        }
-      }
-    }
-  }
-  return advantages;
-}
+//TODO:MTR remove this function if it's not needed anymore.
+// async function getAllPackAdvantages() {
+//   const advantages = [];
+//   const packs = game.packs?.entries();
+//   // If there are no packs, then there are no advantages to load.
+//   if (!packs) return advantages;
+
+//   for (var i = 0; i < packs.length; i++) {
+//     const pack = packs[i];
+//     if (pack.metadata.entity === 'Item') {
+//       const pitems = await pack.getIndex();
+//       for (let j = 0; j < pitems.length; j++) {
+//         const document = await pack.getDocument(pitems[j]._id);
+//         const entry = document.data;
+//         if (entry.type === 'advantage') {
+//           advantages.push(entry);
+//         }
+//       }
+//     }
+//   }
+//   return advantages;
+// }
 
 /* -------------------------------------------- */
 /*  Hotbar Macros                               */

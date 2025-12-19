@@ -1,10 +1,16 @@
 import { ActorType } from "../enums";
 
-/**
- * Extend the base Actor entity by definin`g` a custom roll data structure which is ideal for the Simple system.
- * @extends {Actor}
- */
-export class SvnSea2EActor extends Actor {
+declare module "@league-of-foundry-developers/foundry-vtt-types/configuration" {
+    interface DocumentClassConfig {
+    Actor: typeof SvnSea2EActor<Actor.SubType>;
+  }
+
+  interface ConfiguredActor<SubType extends Actor.SubType> {
+    document: SvnSea2EActor<SubType>;
+  }
+}
+
+export class SvnSea2EActor<SubType extends Actor.SubType = Actor.SubType> extends Actor<SubType> {
   /**
    * Augment the basic actor data with additional dynamic data.
    */
@@ -27,7 +33,7 @@ export class SvnSea2EActor extends Actor {
   /**
    * Keep the value within the minimum and maxium values
    */
-  _validateMinMaxData(value, min, max) {
+  _validateMinMaxData(value: string, min: string, max: string): string {
     if (parseInt(value) > parseInt(max)) {
       return max;
     } else if (parseInt(value) < parseInt(min)) {

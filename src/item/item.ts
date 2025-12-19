@@ -1,10 +1,20 @@
 import { ItemTypes } from "../enums";
 
+declare module "@league-of-foundry-developers/foundry-vtt-types/configuration" {
+    interface DocumentClassConfig {
+    Item: typeof SvnSea2EItem<Item.SubType>;
+  }
+
+  interface ConfiguredItem<SubType extends Item.SubType> {
+    document: SvnSea2EItem<SubType>;
+  }
+}
+
 /**
  * Extend the basic Item with some very simple modifications.
  * @extends {Item}
  */
-export class SvnSea2EItem extends Item {
+export class SvnSea2EItem<SubType extends Item.SubType = Item.SubType> extends Item<SubType> {
   /**
    * Augment the basic Item data model with additional dynamic data.
    */
@@ -26,12 +36,13 @@ export class SvnSea2EItem extends Item {
    * @param {Object} htmlOptions    Options used by the TextEditor.enrichHTML function
    * @return {Object}               An object of chat data to render
    */
-  async getChatData(htmlOptions) {
+  async getChatData(htmlOptions: object = {}): Promise<any> {
     const data = foundry.utils.duplicate(this.system);
 
+    
     // Rich text description
     data.metadatahtml = '';
-    data.description = await TextEditor.enrichHTML(data.description, {
+    data.description = await foundry.applications.ux.TextEditor.implementation.enrichHTML(data.description, {
       htmlOptions,
       async: true,
     });
