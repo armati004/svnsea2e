@@ -21,6 +21,26 @@ export class ActorSheetSS2eHero extends ActorSheetSS2e {
   }
 
   /**
+   * Override constructor specifically for Hero sheets
+   */
+  constructor(object, options = {}) {
+    // Force safe ID generation for hero sheets
+    options.id = `svnsea2e-hero-sheet-${object?.id ?? 'unknown'}`;
+    super(object, options);
+  }
+
+  /**
+   * Override render to fix ID issues before rendering
+   */
+  async _render(force, options) {
+    // Ensure ID is safe before rendering
+    const safeId = `svnsea2e-hero-sheet-${this.document?.id ?? this.object?.id ?? 'unknown'}`;
+    this.options.id = safeId;
+    
+    return super._render(force, options);
+  }
+
+  /**
    * Organize and classify Items for Character sheets.
    *
    * @param {Object} actorData The actor to prepare.

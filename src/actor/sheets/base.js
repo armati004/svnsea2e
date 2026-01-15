@@ -18,6 +18,43 @@ export default class ActorSheetSS2e extends ActorSheet {
     });
   }
 
+  /**
+   * Override constructor to set a safe, deterministic ID before Foundry's internal ID generation
+   */
+  constructor(object, options = {}) {
+    // Generate a safe ID before calling super
+    const actorId = object?.id ?? 'unknown';
+    const actorType = object?.type ?? 'actor';
+    options.id = `svnsea2e-${actorType}-sheet-${actorId}`;
+    super(object, options);
+  }
+
+  /**
+   * Override the id getter to ensure it always returns a safe, CSS-compatible ID
+   */
+  get id() {
+    // Generate a safe ID every time to avoid $t tokens
+    const actor = this.actor ?? this.document ?? this.object;
+    const actorType = actor?.type ?? 'actor';
+    const actorId = actor?.id ?? 'unknown';
+    const safeId = `svnsea2e-${actorType}-sheet-${actorId}`;
+    
+    // Also update options.id to ensure consistency
+    if (this.options) {
+      this.options.id = safeId;
+    }
+    
+    return safeId;
+  }
+
+  /**
+   * Override the title to ensure it doesn't contain problematic characters
+   */
+  get title() {
+    const actor = this.actor ?? this.document;
+    return actor?.name ?? game.i18n.localize('SVNSEA2E.ActorName');
+  }
+
   /* -------------------------------------------- */
 
   /** @override */
